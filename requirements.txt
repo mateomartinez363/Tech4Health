@@ -2,7 +2,3 @@ fastapi
 uvicorn
 pytest
 httpx
-SQLAlchemy
-black
-flake8
-pytest

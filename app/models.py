@@ -2,6 +2,7 @@ from sqlalchemy import Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 from app.db import Base
 
+
 class Paciente(Base):
     __tablename__ = "pacientes"
 
