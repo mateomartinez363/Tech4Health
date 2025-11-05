@@ -1,8 +1,8 @@
-
 def test_healthcheck(client):
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json() == {"status": "ok"}
+
 
 def test_crear_y_consultar_por_id(client):
     payload = {"nombre": "Ana", "edad": 30, "historia_clinica": "Alergia a penicilina"}
@@ -22,6 +22,7 @@ def test_crear_y_consultar_por_id(client):
     assert d2["edad"] == 30
     assert d2["historia_clinica"] == "Alergia a penicilina"
 
+
 def test_eliminar_y_404_luego(client):
     payload = {"nombre": "Luis", "edad": 40, "historia_clinica": "Hipertensión"}
     r = client.post("/pacientes", json=payload)
@@ -32,6 +33,7 @@ def test_eliminar_y_404_luego(client):
 
     r_get = client.get(f"/pacientes/{pid}")
     assert r_get.status_code == 404
+
 
 def test_eliminar_inexistente_retorna_404(client):
     r = client.delete("/pacientes/9999")

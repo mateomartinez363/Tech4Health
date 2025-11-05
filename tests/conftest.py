@@ -13,11 +13,14 @@ if str(ROOT_DIR) not in sys.path:
 from app.main import app
 from app.db import Base, get_db  # Base declarative y dependencia original
 
+
 @pytest.fixture(scope="function")
 def client(tmp_path):
     # DB temporal por test
     test_db_path = tmp_path / "test.db"
-    engine = create_engine(f"sqlite:///{test_db_path}", connect_args={"check_same_thread": False})
+    engine = create_engine(
+        f"sqlite:///{test_db_path}", connect_args={"check_same_thread": False}
+    )
     TestingSessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
     # crear tablas
